@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LogInScreen: UIViewController {
     let passwordTextField = TextFieldWithPadding()
     let emailTextField = TextFieldWithPadding()
     let upperImage = UIImageView()
     let loginLabel = UILabel()
     let lockImage = UIImageView()
     let forgetButton = UIButton()
-    let button =  UIButton()
+    let logInButton =  UIButton()
     let orLabel = UILabel()
     let image = UIImageView()
     let image2 = UIImageView()
@@ -28,12 +28,26 @@ class ViewController: UIViewController {
     let facebookButton = UIButton()
     let twitterButton = UIButton()
     let appleButton = UIButton()
+    let viewModel = LogInViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUpper()
         setUpMiddle()
         setUpCred()
         setUpBottom()
+        logInButton.addTarget(self, action: #selector(clicked), for: .touchUpInside)
+    }
+    @objc func clicked() {
+        let animation  = CABasicAnimation()
+        animation.keyPath = "transform.scale"
+        animation.duration = 0.6
+        animation.fromValue = 1
+        animation.toValue = 0.95
+        animation.autoreverses = true
+        animation.repeatCount = 1
+        logInButton.layer.add(animation, forKey: nil)
+        let tabBarVc = TabBarView()
+        present(tabBarVc, animated: true)
     }
     func setUpUpper() {
         view.addSubview(upperView)
@@ -68,34 +82,34 @@ class ViewController: UIViewController {
     func setUpCred() {
         view.addSubview(credView)
         credView.translatesAutoresizingMaskIntoConstraints = false
-//        CredView.backgroundColor = .red
+        //        CredView.backgroundColor = .red
         credView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
         credView.topAnchor.constraint(equalTo: middleView.bottomAnchor).isActive = true
         credView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         credView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0 ) .isActive = true
         setupTextFields()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10
-        button.setTitle("Login", for: .normal)
-        button.backgroundColor  = .systemBlue
-        credView.addSubview(button)
-        button.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
-        button.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
-        button.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
-        button.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        logInButton.layer.cornerRadius = 10
+        logInButton.setTitle("Login", for: .normal)
+        logInButton.backgroundColor  = .systemBlue
+        credView.addSubview(logInButton)
+        logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
+        logInButton.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
+        logInButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
+        logInButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
         orLabel.translatesAutoresizingMaskIntoConstraints = false
         orLabel.text = "or log in with.."
         orLabel.textColor = .gray
         orLabel.font = .systemFont(ofSize: 15)
         credView.addSubview(orLabel)
-        orLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 15).isActive = true
+        orLabel.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 15).isActive = true
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     func setUpBottom() {
         setupFirstButton()
         setupSeondButton()
         setupThirdButton()
-//        let smallConfiguration = UIImage.SymbolConfiguration(scale: .large)
+        //        let smallConfiguration = UIImage.SymbolConfiguration(scale: .large)
         setUpRegisterPrompt()
     }
     func setupTextFields() {
@@ -126,7 +140,7 @@ class ViewController: UIViewController {
             .font: UIFont.boldSystemFont(ofSize: 15.0)
         ])
         passwordTextField.isSecureTextEntry = true
-        middleView.addSubview(passwordTextField)
+        credView.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
@@ -141,7 +155,7 @@ class ViewController: UIViewController {
     func setupFirstButton() {
         view.addSubview(bottomView)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-//        bottomView.backgroundColor = .red
+        //        bottomView.backgroundColor = .red
         bottomView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
         bottomView.topAnchor.constraint(equalTo: credView.bottomAnchor).isActive = true
         bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -180,7 +194,7 @@ class ViewController: UIViewController {
         view.addSubview(twitterButton)
         twitterButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         twitterButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
-        twitterButton.trailingAnchor.constraint(equalTo: facebookButton.centerXAnchor, constant: -60).isActive = true
+        twitterButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor).isActive = true
         twitterButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
     }
     func setupThirdButton() {
@@ -193,9 +207,9 @@ class ViewController: UIViewController {
         appleButton.setImage(image3.image, for: .normal)
         appleButton.tintColor =  UIColor(named: "mycolor")
         view.addSubview(appleButton)
-        appleButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        appleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        appleButton.trailingAnchor.constraint(equalTo: facebookButton.centerXAnchor, constant: 160).isActive = true
+        appleButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
+        appleButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
+        appleButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor).isActive = true
         appleButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
     }
     func setUpRegisterPrompt() {
@@ -237,8 +251,7 @@ class ViewController: UIViewController {
         emailTextField.layer.addSublayer(bottomLine1)
         let bottomViewHeight = bottomView.frame.height
         newLabel.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0.7*bottomViewHeight).isActive = true
-//        newLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
-
+        //        newLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
     }
 }
 extension UIImage {
@@ -258,12 +271,10 @@ class TextFieldWithPadding: UITextField {
         bottom: 0,
         right: 0
     )
-
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
         return rect.inset(by: textPadding)
     }
-
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: textPadding)

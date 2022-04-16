@@ -33,6 +33,7 @@ class InfoScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "ModeColor")
+        print(person!)
         imageSetup()
         nameLabelSetup()
         joblabelSetup()
@@ -98,7 +99,17 @@ class InfoScreen: UIViewController {
         jobLabel.translatesAutoresizingMaskIntoConstraints = false
         jobLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         jobLabel.bottomAnchor.constraint(equalTo: labelView.bottomAnchor).isActive = true
-        jobLabel.text = "\(person!.designation) at \(person!.company)"
+        if let designation = person?.designation {
+            if(!designation.isEmpty) {
+                jobLabel.text = designation
+            }
+        }
+        if let company = person?.company {
+            if(!company.isEmpty) {
+                jobLabel.text = "\(jobLabel.text!) at \(company)"
+            }
+        }
+//        jobLabel.text = "\(person!.designation) at \(person!.company)"
         jobLabel.font = .systemFont(ofSize: 13, weight: .bold)
         jobLabel.textColor = .lightGray
     }

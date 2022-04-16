@@ -105,8 +105,11 @@ class InfoScreen: UIViewController {
             }
         }
         if let company = person?.company {
+            if let text = jobLabel.text{
+                jobLabel.text = text
+            }
             if(!company.isEmpty) {
-                jobLabel.text = "\(jobLabel.text!) at \(company)"
+                jobLabel.text = "at \(company)"
             }
         }
 //        jobLabel.text = "\(person!.designation) at \(person!.company)"

@@ -22,6 +22,7 @@
 		11BCD8B72809F16600BBBAE8 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B62809F16600BBBAE8 /* EmptyView.swift */; };
 		11BCD8BA2809F4E600BBBAE8 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B92809F4E600BBBAE8 /* TabBarView.swift */; };
 		11BCD8BC2809F59500BBBAE8 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */; };
+		11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */; };
 		142C81F5727B9EE6A22A6695 /* Pods_NSLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F0C732EC6381C6C5963C57 /* Pods_NSLayout.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		11BCD8B62809F16600BBBAE8 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		11BCD8B92809F4E600BBBAE8 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		368AC25FD79CACF00257960C /* Pods-NSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSLayout.debug.xcconfig"; path = "Target Support Files/Pods-NSLayout/Pods-NSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 		118937DF27BA5B3C004EB233 /* NSLayout */ = {
 			isa = PBXGroup;
 			children = (
+				11BCD8BD280FFA2800BBBAE8 /* Extensions */,
 				11BCD8892806F12800BBBAE8 /* View */,
 				11BCD8882806F11600BBBAE8 /* ViewModel */,
 				11BCD8872806F10500BBBAE8 /* Model */,
@@ -131,6 +134,14 @@
 				11BCD8B02807462600BBBAE8 /* ContactCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		11BCD8BD280FFA2800BBBAE8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		18C5B21CE7D58CA760595917 /* Frameworks */ = {
@@ -222,7 +233,7 @@
 		11BCD8852802F75B00BBBAE8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -234,7 +245,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -278,6 +289,7 @@
 				11BCD8B72809F16600BBBAE8 /* EmptyView.swift in Sources */,
 				11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */,
 				11BCD8B12807462600BBBAE8 /* ContactCell.swift in Sources */,
+				11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */,
 				118937E327BA5B3C004EB233 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

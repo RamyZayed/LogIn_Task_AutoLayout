@@ -31,10 +31,8 @@ class LogInScreen: UIViewController {
     let viewModel = LogInViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUpper()
-        setUpMiddle()
-        setUpCred()
-        setUpBottom()
+        addingViews()
+        setUpConstraints()
         logInButton.addTarget(self, action: #selector(clicked), for: .touchUpInside)
     }
     @objc func clicked() {
@@ -49,8 +47,24 @@ class LogInScreen: UIViewController {
         let tabBarVc = TabBarView()
         present(tabBarVc, animated: true)
     }
-    func setUpUpper() {
+    func addingViews() {
         view.addSubview(upperView)
+        upperView.addSubview(upperImage)
+        view.addSubview(middleView)
+        middleView.addSubview(loginLabel)
+        view.addSubview(credView)
+        credView.addSubview(logInButton)
+        credView.addSubview(orLabel)
+        credView.addSubview(emailTextField)
+        credView.addSubview(passwordTextField)
+        view.addSubview(bottomView)
+        bottomView.addSubview(facebookButton)
+        bottomView.addSubview(twitterButton)
+        bottomView.addSubview(newLabel)
+        bottomView.addSubview(appleButton)
+        bottomView.addSubview(registerButton)
+    }
+    func setUpConstraints() {
         upperView.translatesAutoresizingMaskIntoConstraints = false
         upperView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
         upperView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -58,14 +72,12 @@ class LogInScreen: UIViewController {
         upperView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         upperImage.image = UIImage(named: "account.png")
         upperImage.translatesAutoresizingMaskIntoConstraints = false
-        upperView.addSubview(upperImage)
+        
         upperImage.centerXAnchor.constraint(equalTo: upperView.centerXAnchor).isActive = true
         upperImage.centerYAnchor.constraint(equalTo: upperView.centerYAnchor).isActive = true
         upperImage.heightAnchor.constraint(equalTo: upperView.heightAnchor, multiplier: 0.6).isActive = true
         upperImage.widthAnchor.constraint(equalTo: upperView.widthAnchor, multiplier: 0.5).isActive = true
-    }
-    func setUpMiddle() {
-        view.addSubview(middleView)
+        
         middleView.translatesAutoresizingMaskIntoConstraints = false
         middleView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
         middleView.topAnchor.constraint(equalTo: upperView.bottomAnchor).isActive = true
@@ -77,22 +89,18 @@ class LogInScreen: UIViewController {
         // LoginLabel.font = .boldSystemFont(ofSize: 35)
         loginLabel.adjustsFontForContentSizeCategory = true
         loginLabel.textColor = .black
-        middleView.addSubview(loginLabel)
-    }
-    func setUpCred() {
-        view.addSubview(credView)
+        
         credView.translatesAutoresizingMaskIntoConstraints = false
         //        CredView.backgroundColor = .red
         credView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
         credView.topAnchor.constraint(equalTo: middleView.bottomAnchor).isActive = true
         credView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         credView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0 ) .isActive = true
-        setupTextFields()
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         logInButton.layer.cornerRadius = 10
         logInButton.setTitle("Login", for: .normal)
         logInButton.backgroundColor  = .systemBlue
-        credView.addSubview(logInButton)
+        
         logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
         logInButton.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
         logInButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
@@ -101,18 +109,10 @@ class LogInScreen: UIViewController {
         orLabel.text = "or log in with.."
         orLabel.textColor = .gray
         orLabel.font = .systemFont(ofSize: 15)
-        credView.addSubview(orLabel)
+        
         orLabel.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 15).isActive = true
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    }
-    func setUpBottom() {
-        setupFirstButton()
-        setupSeondButton()
-        setupThirdButton()
-        //        let smallConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        setUpRegisterPrompt()
-    }
-    func setupTextFields() {
+        
         emailTextField.leftViewMode = .always
         let atImage = UIImageView(frame: CGRect(x: 60, y: 0, width: 30, height: 30))
         atImage.image = UIImage(systemName: "at.circle")
@@ -120,7 +120,7 @@ class LogInScreen: UIViewController {
         atImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         atImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
         emailTextField.leftView = atImage
-        credView.addSubview(emailTextField)
+        
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
             .foregroundColor: UIColor.lightGray,
@@ -140,7 +140,6 @@ class LogInScreen: UIViewController {
             .font: UIFont.boldSystemFont(ofSize: 15.0)
         ])
         passwordTextField.isSecureTextEntry = true
-        credView.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
@@ -151,9 +150,8 @@ class LogInScreen: UIViewController {
         forgetButton.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.rightView = forgetButton
         passwordTextField.rightViewMode = .always
-    }
-    func setupFirstButton() {
-        view.addSubview(bottomView)
+        
+        
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         //        bottomView.backgroundColor = .red
         bottomView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
@@ -174,14 +172,13 @@ class LogInScreen: UIViewController {
         facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         facebookButton.setImage(image.image, for: .normal)
-        bottomView.addSubview(facebookButton)
+        
         facebookButton.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.25).isActive = true
         facebookButton.heightAnchor.constraint(equalTo: facebookButton.widthAnchor, multiplier: 0.5).isActive = true
         facebookButton.topAnchor.constraint(equalToSystemSpacingBelow: bottomView.topAnchor, multiplier: 0.2)
             .isActive = true
         facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    }
-    func setupSeondButton() {
+        
         image2.image = UIImage(named: "twitter")
         twitterButton.layer.borderWidth = 1
         twitterButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
@@ -191,13 +188,12 @@ class LogInScreen: UIViewController {
         twitterButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
         twitterButton.translatesAutoresizingMaskIntoConstraints = false
         twitterButton.setImage(image2.image, for: .normal)
-        view.addSubview(twitterButton)
+        
         twitterButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         twitterButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
         twitterButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor).isActive = true
         twitterButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
-    }
-    func setupThirdButton() {
+        
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)
         image3.image = UIImage(systemName: "applelogo", withConfiguration: largeConfig)
         appleButton.layer.borderWidth = 1
@@ -206,25 +202,25 @@ class LogInScreen: UIViewController {
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.setImage(image3.image, for: .normal)
         appleButton.tintColor =  UIColor(named: "mycolor")
-        view.addSubview(appleButton)
+        
         appleButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         appleButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
         appleButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor).isActive = true
         appleButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
-    }
-    func setUpRegisterPrompt() {
+        
         newLabel.text = "New to our App?"
         newLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(newLabel)
+        
         newLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -35).isActive = true
         registerButton.setTitle("Register", for: .normal)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.backgroundColor = .clear
         registerButton.setTitleColor(UIColor.blue, for: .normal)
-        view.addSubview(registerButton)
+        
         registerButton.bottomAnchor.constraint(equalTo: newLabel.bottomAnchor, constant: 7).isActive = true
         registerButton.leadingAnchor.constraint(equalTo: newLabel.trailingAnchor).isActive = true
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let middleViewWidth = middleView.frame.width
@@ -254,29 +250,4 @@ class LogInScreen: UIViewController {
         //        newLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
     }
 }
-extension UIImage {
-    func resizeImageTo(size: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return resizedImage
-    }
-}
 
-class TextFieldWithPadding: UITextField {
-    var textPadding = UIEdgeInsets(
-        top: 0,
-        left: 5,
-        bottom: 0,
-        right: 0
-    )
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.textRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
-    }
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
-    }
-}

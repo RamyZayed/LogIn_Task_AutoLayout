@@ -8,13 +8,29 @@
 import UIKit
 
 class LogInScreen: UIViewController {
-    let passwordTextField : TextFieldWithPadding = {
+    
+    var passwordTextField : TextFieldWithPadding = {
         let passwordTextField = TextFieldWithPadding()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 15.0)
         ])
+        let lockImage = UIImageView()
+        lockImage.image = UIImage(systemName: "lock" )
+        lockImage.tintColor = .gray
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.leftViewMode = .always
+        passwordTextField.leftView = lockImage
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        let forgetButton = UIButton()
+        forgetButton.setTitle("Forgot?", for: .normal)
+        forgetButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        forgetButton.setTitleColor( UIColor(red: 0/255, green: 125/255, blue: 255/255, alpha: 1), for: .normal)
+        
+        passwordTextField.rightView = forgetButton
+        passwordTextField.rightViewMode = .always
+        
         return passwordTextField
     }()
     let emailTextField : TextFieldWithPadding = {
@@ -23,6 +39,13 @@ class LogInScreen: UIViewController {
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 15.0)
         ])
+        let atImage = UIImageView(frame: CGRect(x: 60, y: 0, width: 30, height: 30))
+        atImage.image = UIImage(systemName: "at.circle")
+        atImage.tintColor = .gray
+
+        emailTextField.leftViewMode = .always
+        emailTextField.leftView = atImage
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         
         return emailTextField
     }()
@@ -40,19 +63,8 @@ class LogInScreen: UIViewController {
         loginLabel.textColor = .black
         return loginLabel
     }()
-    let lockImage : UIImageView = {
-        let lockImage = UIImageView()
-        lockImage.image = UIImage(systemName: "lock" )
-        lockImage.tintColor = .gray
-        return lockImage
-    }()
-    let forgetButton : UIButton = {
-        let forgetButton = UIButton()
-        forgetButton.setTitle("Forgot?", for: .normal)
-        forgetButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
-        forgetButton.setTitleColor( UIColor(red: 0/255, green: 125/255, blue: 255/255, alpha: 1), for: .normal)
-        return forgetButton
-    }()
+    
+ 
     let logInButton :  UIButton = {
         let logInButton = UIButton()
         logInButton.layer.cornerRadius = 10
@@ -68,7 +80,7 @@ class LogInScreen: UIViewController {
         orLabel.font = .systemFont(ofSize: 15)
         return orLabel
     }()
-    let image : UIImageView = {
+    let facebookImage : UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "facebook")
         image.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -78,12 +90,12 @@ class LogInScreen: UIViewController {
         image.layer.masksToBounds = false
         return image
     }()
-    let image2 : UIImageView = {
+    let twitterImage : UIImageView = {
         let image2 = UIImageView()
         image2.image = UIImage(named: "twitter")
         return image2
     }()
-    let image3 : UIImageView = {
+    let appleImage : UIImageView = {
         let image3 = UIImageView()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)
         image3.image = UIImage(systemName: "applelogo", withConfiguration: largeConfig)
@@ -116,6 +128,7 @@ class LogInScreen: UIViewController {
         facebookButton.contentHorizontalAlignment = .center
         facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        
         return facebookButton
     }()
     let twitterButton : UIButton = {
@@ -140,12 +153,8 @@ class LogInScreen: UIViewController {
     }()
     let viewModel = LogInViewModel()
     
-    let atImage : UIImageView = {
-        let atImage = UIImageView(frame: CGRect(x: 60, y: 0, width: 30, height: 30))
-        atImage.image = UIImage(systemName: "at.circle")
-        atImage.tintColor = .gray
-        return atImage
-    }()
+ 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,29 +232,18 @@ class LogInScreen: UIViewController {
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         
-        atImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        atImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        emailTextField.leftViewMode = .always
-        emailTextField.leftView = atImage
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        
         emailTextField.topAnchor.constraint(equalTo: credView.topAnchor).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: loginLabel.leadingAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: credView.widthAnchor, multiplier: 0.8).isActive = true
         
-        passwordTextField.leftViewMode = .always
-        passwordTextField.leftView = lockImage
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
         
-        forgetButton.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.rightView = forgetButton
-        passwordTextField.rightViewMode = .always
+
         
         
         bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -256,7 +254,7 @@ class LogInScreen: UIViewController {
         bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
         
-        facebookButton.setImage(image.image, for: .normal)
+        facebookButton.setImage(facebookImage.image, for: .normal)
         facebookButton.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.25).isActive = true
         facebookButton.heightAnchor.constraint(equalTo: facebookButton.widthAnchor, multiplier: 0.5).isActive = true
         facebookButton.topAnchor.constraint(equalToSystemSpacingBelow: bottomView.topAnchor, multiplier: 0.2)
@@ -264,7 +262,7 @@ class LogInScreen: UIViewController {
         facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         
-        twitterButton.setImage(image2.image, for: .normal)
+        twitterButton.setImage(twitterImage.image, for: .normal)
         
         twitterButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         twitterButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
@@ -272,7 +270,7 @@ class LogInScreen: UIViewController {
         twitterButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
         
         
-        appleButton.setImage(image3.image, for: .normal)
+        appleButton.setImage(appleImage.image, for: .normal)
         
         appleButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         appleButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true

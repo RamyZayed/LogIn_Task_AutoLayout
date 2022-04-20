@@ -8,27 +8,145 @@
 import UIKit
 
 class LogInScreen: UIViewController {
-    let passwordTextField = TextFieldWithPadding()
-    let emailTextField = TextFieldWithPadding()
-    let upperImage = UIImageView()
-    let loginLabel = UILabel()
-    let lockImage = UIImageView()
-    let forgetButton = UIButton()
-    let logInButton =  UIButton()
-    let orLabel = UILabel()
-    let image = UIImageView()
-    let image2 = UIImageView()
-    let image3 = UIImageView()
-    let newLabel = UILabel()
-    let registerButton = UIButton()
+    let passwordTextField : TextFieldWithPadding = {
+        let passwordTextField = TextFieldWithPadding()
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.boldSystemFont(ofSize: 15.0)
+        ])
+        passwordTextField.isSecureTextEntry = true
+        return passwordTextField
+    }()
+    let emailTextField : TextFieldWithPadding = {
+       let emailTextField = TextFieldWithPadding()
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.boldSystemFont(ofSize: 15.0)
+        ])
+        
+        return emailTextField
+    }()
+    let upperImage :UIImageView = {
+        let upperImage = UIImageView()
+        upperImage.image = UIImage(named: "account.png")
+        return upperImage
+    }()
+    let loginLabel : UILabel = {
+        let loginLabel = UILabel()
+        loginLabel.text = "Login"
+        loginLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        // LoginLabel.font = .boldSystemFont(ofSize: 35)
+        loginLabel.adjustsFontForContentSizeCategory = true
+        loginLabel.textColor = .black
+        return loginLabel
+    }()
+    let lockImage : UIImageView = {
+        let lockImage = UIImageView()
+        lockImage.image = UIImage(systemName: "lock" )
+        lockImage.tintColor = .gray
+        return lockImage
+    }()
+    let forgetButton : UIButton = {
+        let forgetButton = UIButton()
+        forgetButton.setTitle("Forgot?", for: .normal)
+        forgetButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        forgetButton.setTitleColor( UIColor(red: 0/255, green: 125/255, blue: 255/255, alpha: 1), for: .normal)
+        return forgetButton
+    }()
+    let logInButton :  UIButton = {
+        let logInButton = UIButton()
+        logInButton.layer.cornerRadius = 10
+        logInButton.setTitle("Login", for: .normal)
+        logInButton.backgroundColor  = .systemBlue
+        return logInButton
+    }()
+    let orLabel : UILabel = {
+        let orLabel = UILabel()
+        orLabel.translatesAutoresizingMaskIntoConstraints = false
+        orLabel.text = "or log in with.."
+        orLabel.textColor = .gray
+        orLabel.font = .systemFont(ofSize: 15)
+        return orLabel
+    }()
+    let image : UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "facebook")
+        image.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        image.layer.shadowOffset = CGSize(width: 6, height: 6)
+        image.layer.shadowOpacity = 1
+        image.layer.shadowRadius = 2.0
+        image.layer.masksToBounds = false
+        return image
+    }()
+    let image2 : UIImageView = {
+        let image2 = UIImageView()
+        image2.image = UIImage(named: "twitter")
+        return image2
+    }()
+    let image3 : UIImageView = {
+        let image3 = UIImageView()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)
+        image3.image = UIImage(systemName: "applelogo", withConfiguration: largeConfig)
+        return image3
+    }()
+    let newLabel : UILabel = {
+        let newLabel = UILabel()
+        newLabel.text = "New to our App?"
+        newLabel.translatesAutoresizingMaskIntoConstraints = false
+        return newLabel
+    }()
+    let registerButton : UIButton = {
+        let registerButton = UIButton()
+        registerButton.setTitle("Register", for: .normal)
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
+        registerButton.backgroundColor = .clear
+        registerButton.setTitleColor(UIColor.blue, for: .normal)
+        return registerButton
+    }()
     let upperView = UIView()
     let middleView = UIView()
     let credView = UIView()
     let bottomView = UIView()
-    let facebookButton = UIButton()
-    let twitterButton = UIButton()
-    let appleButton = UIButton()
+    let facebookButton : UIButton = {
+        let facebookButton = UIButton()
+        facebookButton.layer.borderWidth = 1
+        facebookButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        facebookButton.layer.cornerRadius = 10
+        facebookButton.contentVerticalAlignment = .center
+        facebookButton.contentHorizontalAlignment = .center
+        facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
+        facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        return facebookButton
+    }()
+    let twitterButton : UIButton = {
+        let twitterButton = UIButton()
+        twitterButton.layer.borderWidth = 1
+        twitterButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        twitterButton.layer.cornerRadius = 10
+        twitterButton.contentVerticalAlignment = .fill
+        twitterButton.contentHorizontalAlignment = .fill
+        twitterButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
+        twitterButton.translatesAutoresizingMaskIntoConstraints = false
+        return twitterButton
+    }()
+    let appleButton : UIButton = {
+        let appleButton = UIButton()
+        appleButton.layer.borderWidth = 1
+        appleButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        appleButton.layer.cornerRadius = 10
+        appleButton.tintColor =  UIColor(named: "mycolor")
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        return appleButton
+    }()
     let viewModel = LogInViewModel()
+    
+    let atImage : UIImageView = {
+        let atImage = UIImageView(frame: CGRect(x: 60, y: 0, width: 30, height: 30))
+        atImage.image = UIImage(systemName: "at.circle")
+        atImage.tintColor = .gray
+        return atImage
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addingViews()
@@ -70,7 +188,7 @@ class LogInScreen: UIViewController {
         upperView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         upperView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         upperView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        upperImage.image = UIImage(named: "account.png")
+        
         upperImage.translatesAutoresizingMaskIntoConstraints = false
         
         upperImage.centerXAnchor.constraint(equalTo: upperView.centerXAnchor).isActive = true
@@ -84,11 +202,7 @@ class LogInScreen: UIViewController {
         middleView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         middleView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.text = "Login"
-        loginLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        // LoginLabel.font = .boldSystemFont(ofSize: 35)
-        loginLabel.adjustsFontForContentSizeCategory = true
-        loginLabel.textColor = .black
+        
         
         credView.translatesAutoresizingMaskIntoConstraints = false
         //        CredView.backgroundColor = .red
@@ -97,56 +211,38 @@ class LogInScreen: UIViewController {
         credView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         credView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0 ) .isActive = true
         logInButton.translatesAutoresizingMaskIntoConstraints = false
-        logInButton.layer.cornerRadius = 10
-        logInButton.setTitle("Login", for: .normal)
-        logInButton.backgroundColor  = .systemBlue
+        
         
         logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
         logInButton.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
         logInButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
         logInButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
-        orLabel.translatesAutoresizingMaskIntoConstraints = false
-        orLabel.text = "or log in with.."
-        orLabel.textColor = .gray
-        orLabel.font = .systemFont(ofSize: 15)
+        
         
         orLabel.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 15).isActive = true
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        emailTextField.leftViewMode = .always
-        let atImage = UIImageView(frame: CGRect(x: 60, y: 0, width: 30, height: 30))
-        atImage.image = UIImage(systemName: "at.circle")
-        atImage.tintColor = .gray
+        
         atImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         atImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        emailTextField.leftViewMode = .always
         emailTextField.leftView = atImage
-        
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
-            .foregroundColor: UIColor.lightGray,
-            .font: UIFont.boldSystemFont(ofSize: 15.0)
-        ])
+        
         emailTextField.topAnchor.constraint(equalTo: credView.topAnchor).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: loginLabel.leadingAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: credView.widthAnchor, multiplier: 0.8).isActive = true
-        lockImage.image = UIImage(systemName: "lock" )
-        lockImage.tintColor = .gray
+        
         passwordTextField.leftViewMode = .always
         passwordTextField.leftView = lockImage
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [
-            .foregroundColor: UIColor.lightGray,
-            .font: UIFont.boldSystemFont(ofSize: 15.0)
-        ])
-        passwordTextField.isSecureTextEntry = true
+        
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
-        forgetButton.setTitle("Forgot?", for: .normal)
-        forgetButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
-        forgetButton.setTitleColor( UIColor(red: 0/255, green: 125/255, blue: 255/255, alpha: 1), for: .normal)
+        
         forgetButton.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.rightView = forgetButton
         passwordTextField.rightViewMode = .always
@@ -158,35 +254,16 @@ class LogInScreen: UIViewController {
         bottomView.topAnchor.constraint(equalTo: credView.bottomAnchor).isActive = true
         bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        image.image = UIImage(named: "facebook")
-        image.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        image.layer.shadowOffset = CGSize(width: 6, height: 6)
-        image.layer.shadowOpacity = 1
-        image.layer.shadowRadius = 2.0
-        image.layer.masksToBounds = false
-        facebookButton.layer.borderWidth = 1
-        facebookButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
-        facebookButton.layer.cornerRadius = 10
-        facebookButton.contentVerticalAlignment = .center
-        facebookButton.contentHorizontalAlignment = .center
-        facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
-        facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButton.setImage(image.image, for: .normal)
         
+        
+        facebookButton.setImage(image.image, for: .normal)
         facebookButton.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.25).isActive = true
         facebookButton.heightAnchor.constraint(equalTo: facebookButton.widthAnchor, multiplier: 0.5).isActive = true
         facebookButton.topAnchor.constraint(equalToSystemSpacingBelow: bottomView.topAnchor, multiplier: 0.2)
             .isActive = true
         facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        image2.image = UIImage(named: "twitter")
-        twitterButton.layer.borderWidth = 1
-        twitterButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
-        twitterButton.layer.cornerRadius = 10
-        twitterButton.contentVerticalAlignment = .fill
-        twitterButton.contentHorizontalAlignment = .fill
-        twitterButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
-        twitterButton.translatesAutoresizingMaskIntoConstraints = false
+        
         twitterButton.setImage(image2.image, for: .normal)
         
         twitterButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
@@ -194,29 +271,17 @@ class LogInScreen: UIViewController {
         twitterButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor).isActive = true
         twitterButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
         
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)
-        image3.image = UIImage(systemName: "applelogo", withConfiguration: largeConfig)
-        appleButton.layer.borderWidth = 1
-        appleButton.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
-        appleButton.layer.cornerRadius = 10
-        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        
         appleButton.setImage(image3.image, for: .normal)
-        appleButton.tintColor =  UIColor(named: "mycolor")
         
         appleButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         appleButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
         appleButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor).isActive = true
         appleButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
         
-        newLabel.text = "New to our App?"
-        newLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         
         newLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -35).isActive = true
-        registerButton.setTitle("Register", for: .normal)
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        registerButton.backgroundColor = .clear
-        registerButton.setTitleColor(UIColor.blue, for: .normal)
-        
         registerButton.bottomAnchor.constraint(equalTo: newLabel.bottomAnchor, constant: 7).isActive = true
         registerButton.leadingAnchor.constraint(equalTo: newLabel.trailingAnchor).isActive = true
     }

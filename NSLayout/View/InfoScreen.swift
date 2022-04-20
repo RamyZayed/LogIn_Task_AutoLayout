@@ -196,59 +196,62 @@ class InfoScreen: UIViewController {
     
     func designationlabelSetup() {
         stackView.addArrangedSubview(designationLabel)
-        designationLabel.setup1(first: "Designation")
+        designationLabel.text = "Designation"
+        designationLabel.textColor = .gray
+        designationLabel.font = .systemFont(ofSize: 15, weight: .bold)
         designationLabel.translatesAutoresizingMaskIntoConstraints = false
         designationLabel.leadingAnchor.constraint(equalTo: infoLabel.leadingAnchor, constant: 10).isActive = true
         view.addSubview(designation)
         designation.translatesAutoresizingMaskIntoConstraints = false
-        designation.setup2(first: person!.designation)
+        designation.text = person!.designation
+        designation.textColor = .gray
+        designation.font = .systemFont(ofSize: 15, weight: .light)
         designation.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         designation.topAnchor.constraint(equalTo: designationLabel.topAnchor).isActive = true
     }
     func departmentLabelSetup() {
         stackView.addArrangedSubview(departmentLabel)
-        departmentLabel.setup1(first: "Department")
+        departmentLabel.text = "Department"
+        departmentLabel.textColor = .gray
+        departmentLabel.font = .systemFont(ofSize: 15, weight: .bold)
         departmentLabel.translatesAutoresizingMaskIntoConstraints = false
         departmentLabel.leadingAnchor.constraint(equalTo: designationLabel.leadingAnchor).isActive = true
         stackView.addSubview(department)
         department.translatesAutoresizingMaskIntoConstraints = false
-        department.setup2(first: person!.department)
+        department.text = person!.department
+        department.textColor = .gray
+        department.font = .systemFont(ofSize: 15, weight: .light)
         department.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         department.topAnchor.constraint(equalTo: departmentLabel.topAnchor).isActive = true
     }
     func stationlabelSetup() {
         stackView.addArrangedSubview(stationLabel)
-        stationLabel.setup1(first: "Station")
+        stationLabel.text = "Station"
+        stationLabel.textColor = .gray
+        stationLabel.font = .systemFont(ofSize: 15, weight: .bold)
         stationLabel.translatesAutoresizingMaskIntoConstraints = false
         stationLabel.leadingAnchor.constraint(equalTo: departmentLabel.leadingAnchor).isActive = true
         stackView.addSubview(station)
         station.translatesAutoresizingMaskIntoConstraints = false
-        station.setup2(first: person!.station)
+        station.text = person!.station
+        station.textColor = .gray
+        station.font = .systemFont(ofSize: 15, weight: .light)
         station.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         station.topAnchor.constraint(equalTo: stationLabel.topAnchor).isActive = true
     }
     func companylabelSetup() {
         stackView.addArrangedSubview(companyLabel)
-        companyLabel.setup1(first: "Company")
+        companyLabel.text = "Company"
+        companyLabel.textColor = .gray
+        companyLabel.font = .systemFont(ofSize: 15, weight: .bold)
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
         companyLabel.leadingAnchor.constraint(equalTo: stationLabel.leadingAnchor).isActive = true
         stackView.addSubview(company)
         company.translatesAutoresizingMaskIntoConstraints = false
-        company.setup2(first: person!.company)
+        company.text = person!.company
+        company.textColor = .gray
+        company.font = .systemFont(ofSize: 15, weight: .light)
         company.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         company.topAnchor.constraint(equalTo: companyLabel.topAnchor).isActive = true
-    }
-}
-
-extension UILabel {
-    func setup1(first: String) {
-        self.text = first
-        self.textColor = .gray
-        self.font = .systemFont(ofSize: 15, weight: .bold)
-    }
-    func setup2(first: String) {
-        self.text = first
-        self.textColor = .gray
-        self.font = .systemFont(ofSize: 15, weight: .light)
     }
 }

@@ -9,9 +9,21 @@ import UIKit
 
 class TabBarView: UITabBarController {
     let contactList = ContactListView()
-    let tempView1 = EmptyView()
-    let tempView2 = EmptyView()
-    let tempView3 = EmptyView()
+    let tempView1 : EmptyView = {
+        let tempView1 = EmptyView()
+        tempView1.color = .green
+        return tempView1
+    }()
+    let tempView2 : EmptyView = {
+        let tempView2 = EmptyView()
+        tempView2.color = .yellow
+        return tempView2
+    }()
+    let tempView3 : EmptyView = {
+        let tempView3 = EmptyView()
+        tempView3.color = .blue
+        return tempView3
+    }()
     let viewModel = TabBarViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +39,6 @@ class TabBarView: UITabBarController {
         tabBar.tintColor = .systemRed
     }
     func setUpBarItems() {
-        tempView1.color = .green
-        tempView2.color = .yellow
-        tempView3.color = .blue
         setViewControllers([contactList, tempView1, tempView2, tempView3], animated: true)
         guard let items = tabBar.items else {
             return

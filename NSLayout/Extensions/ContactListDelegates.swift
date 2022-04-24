@@ -71,13 +71,16 @@ extension ContactListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mytable.deselectRow(at: indexPath, animated: true)
         let informationView = InfoScreen()
+        let InfoScreenvm = InfoScreenViewModel()
+        informationView.viewModel = InfoScreenvm
         if searchText.text != ""{
-            informationView.person = viewModel.filtered[indexPath.row]
+            informationView.viewModel?.person = viewModel.filtered[indexPath.row]
         } else {
-            informationView.person = viewModel.d2array[indexPath.section][indexPath.row]
+            informationView.viewModel?.person = viewModel.d2array[indexPath.section][indexPath.row]
         }
         //        s2.person = profiles[indexPath.row]
         informationView.modalPresentationStyle = .formSheet

@@ -9,7 +9,7 @@ import UIKit
 
 class InfoScreen: UIViewController {
     private var colors: [UIColor] = [.blue, .red, .systemPink, .yellow, .green, .orange, .darkGray, .brown]
-    var person: Contact?
+    var viewModel : InfoScreenViewModel?
     private var nameLabel : UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = .monospacedDigitSystemFont(ofSize: 25, weight: .bold)
@@ -197,7 +197,7 @@ class InfoScreen: UIViewController {
         pic.centerYAnchor.constraint(equalTo: pictureHolder.centerYAnchor).isActive     = true
         pic.heightAnchor.constraint(equalTo: pictureHolder.heightAnchor, multiplier: 1).isActive = true
         pic.widthAnchor.constraint(equalTo: pic.heightAnchor).isActive              = true
-        if let image = person?.image {
+        if let image = viewModel?.person?.image {
             pic.image = image
         } else {
             let random = Int.random(in: 0..<colors.count)
@@ -205,8 +205,8 @@ class InfoScreen: UIViewController {
             firstLetterOfFirstAndLast.translatesAutoresizingMaskIntoConstraints = false
             firstLetterOfFirstAndLast.centerXAnchor.constraint(equalTo: pic.centerXAnchor).isActive = true
             firstLetterOfFirstAndLast.centerYAnchor.constraint(equalTo: pic.centerYAnchor).isActive = true
-            let comp = person!.name.components(separatedBy: " ")
-            firstLetterOfFirstAndLast.text = "\(Array(comp[0])[0]) \(Array(comp[1])[0])"
+            let comp = viewModel?.person!.name.components(separatedBy: " ")
+            firstLetterOfFirstAndLast.text = "\(Array(comp![0])[0]) \(Array(comp![1])[0])"
             
         }
         
@@ -220,18 +220,18 @@ class InfoScreen: UIViewController {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerXAnchor.constraint(equalTo: labelView.centerXAnchor).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: labelView.centerYAnchor).isActive = true
-        nameLabel.text = person?.name
+        nameLabel.text = viewModel?.person?.name
         
         
         jobLabel.translatesAutoresizingMaskIntoConstraints = false
         jobLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         jobLabel.bottomAnchor.constraint(equalTo: labelView.bottomAnchor).isActive = true
-        if let designation = person?.designation {
+        if let designation = viewModel?.person?.designation {
             if(!designation.isEmpty) {
                 jobLabel.text = designation
             }
         }
-        if let company = person?.company {
+        if let company = viewModel?.person?.company {
             if let text = jobLabel.text{
                 jobLabel.text = text
             }
@@ -288,7 +288,7 @@ class InfoScreen: UIViewController {
         designationLabel.leadingAnchor.constraint(equalTo: infoLabel.leadingAnchor, constant: 10).isActive = true
 
         designation.translatesAutoresizingMaskIntoConstraints = false
-        designation.text = person!.designation        
+        designation.text = viewModel?.person?.designation
         designation.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         designation.topAnchor.constraint(equalTo: designationLabel.topAnchor).isActive = true
         
@@ -298,7 +298,7 @@ class InfoScreen: UIViewController {
         departmentLabel.leadingAnchor.constraint(equalTo: designationLabel.leadingAnchor).isActive = true
         
         department.translatesAutoresizingMaskIntoConstraints = false
-        department.text = person!.department
+        department.text = viewModel?.person?.department
         department.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         department.topAnchor.constraint(equalTo: departmentLabel.topAnchor).isActive = true
         
@@ -307,7 +307,7 @@ class InfoScreen: UIViewController {
         stationLabel.leadingAnchor.constraint(equalTo: departmentLabel.leadingAnchor).isActive = true
         
         station.translatesAutoresizingMaskIntoConstraints = false
-        station.text = person!.station
+        station.text = viewModel?.person?.station
         station.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         station.topAnchor.constraint(equalTo: stationLabel.topAnchor).isActive = true
         
@@ -316,7 +316,7 @@ class InfoScreen: UIViewController {
         companyLabel.leadingAnchor.constraint(equalTo: stationLabel.leadingAnchor).isActive = true
         
         company.translatesAutoresizingMaskIntoConstraints = false
-        company.text = person!.company
+        company.text = viewModel?.person?.company
         company.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         company.topAnchor.constraint(equalTo: companyLabel.topAnchor).isActive = true
         

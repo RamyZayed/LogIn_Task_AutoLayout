@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInScreen: UIViewController {
+class LogInScreenViewController: UIViewController {
     
     var passwordTextField : TextFieldWithPadding = {
         let passwordTextField = TextFieldWithPadding()
@@ -171,7 +171,7 @@ class LogInScreen: UIViewController {
         animation.autoreverses = true
         animation.repeatCount = 1
         logInButton.layer.add(animation, forKey: nil)
-        let tabBarVc = TabBarView()
+        let tabBarVc = TabBarViewViewController()
         present(tabBarVc, animated: true)
     }
     func addingViews() {

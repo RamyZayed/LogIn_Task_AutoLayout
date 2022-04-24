@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-extension ContactListView: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource {
     // the section divider
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
@@ -67,14 +67,14 @@ extension ContactListView: UITableViewDataSource {
     }
 }
 
-extension ContactListView: UITableViewDelegate {
+extension ContactListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mytable.deselectRow(at: indexPath, animated: true)
-        let informationView = InfoScreen()
+        let informationView = InfoScreenViewController()
         let InfoScreenvm = InfoScreenViewModel()
         informationView.viewModel = InfoScreenvm
         if searchText.text != ""{

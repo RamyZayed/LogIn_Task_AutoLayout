@@ -9,18 +9,18 @@
 /* Begin PBXBuildFile section */
 		118937E127BA5B3C004EB233 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118937E027BA5B3C004EB233 /* AppDelegate.swift */; };
 		118937E327BA5B3C004EB233 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118937E227BA5B3C004EB233 /* SceneDelegate.swift */; };
-		118937E527BA5B3C004EB233 /* LogInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118937E427BA5B3C004EB233 /* LogInScreen.swift */; };
+		118937E527BA5B3C004EB233 /* LogInScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118937E427BA5B3C004EB233 /* LogInScreenViewController.swift */; };
 		118937E827BA5B3C004EB233 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118937E627BA5B3C004EB233 /* Main.storyboard */; };
 		118937EA27BA5B3D004EB233 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118937E927BA5B3D004EB233 /* Assets.xcassets */; };
 		118937ED27BA5B3D004EB233 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118937EB27BA5B3D004EB233 /* LaunchScreen.storyboard */; };
 		11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD88A2806F14300BBBAE8 /* logInScreenViewModel.swift */; };
-		11BCD88D28070DEA00BBBAE8 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD88C28070DEA00BBBAE8 /* ContactListView.swift */; };
+		11BCD88D28070DEA00BBBAE8 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD88C28070DEA00BBBAE8 /* ContactListViewController.swift */; };
 		11BCD88F28070DFF00BBBAE8 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD88E28070DFF00BBBAE8 /* ContactListViewModel.swift */; };
 		11BCD8B12807462600BBBAE8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B02807462600BBBAE8 /* ContactCell.swift */; };
 		11BCD8B32807468900BBBAE8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B22807468900BBBAE8 /* Contact.swift */; };
-		11BCD8B5280752E400BBBAE8 /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B4280752E400BBBAE8 /* InfoScreen.swift */; };
-		11BCD8B72809F16600BBBAE8 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B62809F16600BBBAE8 /* EmptyView.swift */; };
-		11BCD8BA2809F4E600BBBAE8 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B92809F4E600BBBAE8 /* TabBarView.swift */; };
+		11BCD8B5280752E400BBBAE8 /* InfoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B4280752E400BBBAE8 /* InfoScreenViewController.swift */; };
+		11BCD8B72809F16600BBBAE8 /* EmptyViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B62809F16600BBBAE8 /* EmptyViewViewController.swift */; };
+		11BCD8BA2809F4E600BBBAE8 /* TabBarViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */; };
 		11BCD8BC2809F59500BBBAE8 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */; };
 		11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */; };
 		11BCD8C12812B0FE00BBBAE8 /* ContactListDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */; };
@@ -34,19 +34,19 @@
 		118937DD27BA5B3C004EB233 /* NSLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		118937E027BA5B3C004EB233 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		118937E227BA5B3C004EB233 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		118937E427BA5B3C004EB233 /* LogInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreen.swift; sourceTree = "<group>"; };
+		118937E427BA5B3C004EB233 /* LogInScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreenViewController.swift; sourceTree = "<group>"; };
 		118937E727BA5B3C004EB233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		118937E927BA5B3D004EB233 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		118937EC27BA5B3D004EB233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		118937EE27BA5B3D004EB233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11BCD88A2806F14300BBBAE8 /* logInScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInScreenViewModel.swift; sourceTree = "<group>"; };
-		11BCD88C28070DEA00BBBAE8 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		11BCD88C28070DEA00BBBAE8 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		11BCD88E28070DFF00BBBAE8 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
 		11BCD8B02807462600BBBAE8 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		11BCD8B22807468900BBBAE8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		11BCD8B4280752E400BBBAE8 /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
-		11BCD8B62809F16600BBBAE8 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		11BCD8B92809F4E600BBBAE8 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		11BCD8B4280752E400BBBAE8 /* InfoScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenViewController.swift; sourceTree = "<group>"; };
+		11BCD8B62809F16600BBBAE8 /* EmptyViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewViewController.swift; sourceTree = "<group>"; };
+		11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewViewController.swift; sourceTree = "<group>"; };
 		11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDelegates.swift; sourceTree = "<group>"; };
@@ -123,12 +123,12 @@
 		11BCD8892806F12800BBBAE8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				11BCD88C28070DEA00BBBAE8 /* ContactListView.swift */,
+				11BCD88C28070DEA00BBBAE8 /* ContactListViewController.swift */,
 				11BCD8B82809F17000BBBAE8 /* Cells */,
-				118937E427BA5B3C004EB233 /* LogInScreen.swift */,
-				11BCD8B4280752E400BBBAE8 /* InfoScreen.swift */,
-				11BCD8B62809F16600BBBAE8 /* EmptyView.swift */,
-				11BCD8B92809F4E600BBBAE8 /* TabBarView.swift */,
+				118937E427BA5B3C004EB233 /* LogInScreenViewController.swift */,
+				11BCD8B4280752E400BBBAE8 /* InfoScreenViewController.swift */,
+				11BCD8B62809F16600BBBAE8 /* EmptyViewViewController.swift */,
+				11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,16 +284,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				118937E527BA5B3C004EB233 /* LogInScreen.swift in Sources */,
+				118937E527BA5B3C004EB233 /* LogInScreenViewController.swift in Sources */,
 				118937E127BA5B3C004EB233 /* AppDelegate.swift in Sources */,
-				11BCD88D28070DEA00BBBAE8 /* ContactListView.swift in Sources */,
-				11BCD8B5280752E400BBBAE8 /* InfoScreen.swift in Sources */,
+				11BCD88D28070DEA00BBBAE8 /* ContactListViewController.swift in Sources */,
+				11BCD8B5280752E400BBBAE8 /* InfoScreenViewController.swift in Sources */,
 				11BCD8BC2809F59500BBBAE8 /* TabBarViewModel.swift in Sources */,
-				11BCD8BA2809F4E600BBBAE8 /* TabBarView.swift in Sources */,
+				11BCD8BA2809F4E600BBBAE8 /* TabBarViewViewController.swift in Sources */,
 				11BCD88F28070DFF00BBBAE8 /* ContactListViewModel.swift in Sources */,
 				11BCD8B32807468900BBBAE8 /* Contact.swift in Sources */,
 				11BCD8C3281547DE00BBBAE8 /* InfoScreenViewModel.swift in Sources */,
-				11BCD8B72809F16600BBBAE8 /* EmptyView.swift in Sources */,
+				11BCD8B72809F16600BBBAE8 /* EmptyViewViewController.swift in Sources */,
 				11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */,
 				11BCD8B12807462600BBBAE8 /* ContactCell.swift in Sources */,
 				11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */,

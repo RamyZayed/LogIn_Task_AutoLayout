@@ -7,20 +7,20 @@
 
 import UIKit
 
-class TabBarView: UITabBarController {
-    let contactList = ContactListView()
-    let tempView1 : EmptyView = {
-        let tempView1 = EmptyView()
+class TabBarViewViewController: UITabBarController {
+    let contactList = ContactListViewController()
+    let tempView1 : EmptyViewViewController = {
+        let tempView1 = EmptyViewViewController()
         tempView1.color = .green
         return tempView1
     }()
-    let tempView2 : EmptyView = {
-        let tempView2 = EmptyView()
+    let tempView2 : EmptyViewViewController = {
+        let tempView2 = EmptyViewViewController()
         tempView2.color = .yellow
         return tempView2
     }()
-    let tempView3 : EmptyView = {
-        let tempView3 = EmptyView()
+    let tempView3 : EmptyViewViewController = {
+        let tempView3 = EmptyViewViewController()
         tempView3.color = .blue
         return tempView3
     }()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoScreen: UIViewController {
+class InfoScreenViewController: UIViewController {
     private var colors: [UIColor] = [.blue, .red, .systemPink, .yellow, .green, .orange, .darkGray, .brown]
     var viewModel : InfoScreenViewModel?
     private var nameLabel : UILabel = {

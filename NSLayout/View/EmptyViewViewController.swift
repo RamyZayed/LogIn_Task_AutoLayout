@@ -7,10 +7,10 @@
 
 import UIKit
 
-class EmptyView: UIViewController {
+class EmptyViewViewController: UIViewController {
     var color: UIColor?
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = color!
+        view.backgroundColor = color ?? .white
     }
 }

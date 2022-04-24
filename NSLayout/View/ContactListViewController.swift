@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactListView: UIViewController {
+class ContactListViewController: UIViewController {
     let viewModel = ConatctListViewModel()
     let mytable  : UITableView = {
         let mytable = UITableView()
@@ -64,7 +64,7 @@ class ContactListView: UIViewController {
     }
 }
 
-extension ContactListView: UITextFieldDelegate {
+extension ContactListViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.filterText(textField.text!)
         DispatchQueue.main.async {[weak self ] in

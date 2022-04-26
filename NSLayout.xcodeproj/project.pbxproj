@@ -25,6 +25,8 @@
 		11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */; };
 		11BCD8C12812B0FE00BBBAE8 /* ContactListDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */; };
 		11BCD8C3281547DE00BBBAE8 /* InfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C2281547DE00BBBAE8 /* InfoScreenViewModel.swift */; };
+		11BCD8C5281698E800BBBAE8 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */; };
+		11BCD8C72816BFA400BBBAE8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */; };
 		142C81F5727B9EE6A22A6695 /* Pods_NSLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F0C732EC6381C6C5963C57 /* Pods_NSLayout.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDelegates.swift; sourceTree = "<group>"; };
 		11BCD8C2281547DE00BBBAE8 /* InfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenViewModel.swift; sourceTree = "<group>"; };
+		11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
+		11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		368AC25FD79CACF00257960C /* Pods-NSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSLayout.debug.xcconfig"; path = "Target Support Files/Pods-NSLayout/Pods-NSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,8 @@
 			children = (
 				11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */,
 				11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */,
+				11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */,
+				11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				11BCD8BA2809F4E600BBBAE8 /* TabBarViewViewController.swift in Sources */,
 				11BCD88F28070DFF00BBBAE8 /* ContactListViewModel.swift in Sources */,
 				11BCD8B32807468900BBBAE8 /* Contact.swift in Sources */,
+				11BCD8C72816BFA400BBBAE8 /* StringExtension.swift in Sources */,
 				11BCD8C3281547DE00BBBAE8 /* InfoScreenViewModel.swift in Sources */,
 				11BCD8B72809F16600BBBAE8 /* EmptyViewViewController.swift in Sources */,
 				11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */,
@@ -299,6 +306,7 @@
 				11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */,
 				118937E327BA5B3C004EB233 /* SceneDelegate.swift in Sources */,
 				11BCD8C12812B0FE00BBBAE8 /* ContactListDelegates.swift in Sources */,
+				11BCD8C5281698E800BBBAE8 /* ColorsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ import UIKit
 
 class ContactListViewController: UIViewController {
     let viewModel = ConatctListViewModel()
-    let mytable  : UITableView = {
+    let contactsTableView : UITableView = {
         let mytable = UITableView()
         mytable.register( ContactCell.self, forCellReuseIdentifier: "Cell")
         mytable.sectionHeaderTopPadding = 0
@@ -17,24 +17,23 @@ class ContactListViewController: UIViewController {
         mytable.separatorColor = .clear
         return mytable
     }()
-    let searchText : UITextField = {
-        let searchText = UITextField()
+    let searchText : UISearchBar = {
+        let searchText = UISearchBar()
         searchText.placeholder = "Search Contacts"
         let img = UIImageView(image: UIImage(systemName: "magnifyingglass"))
         img.tintColor  = .gray
-        searchText.rightViewMode = .always
-        searchText.rightView = img
+//        searchText.rightViewMode = .always
+//        searchText.rightView = img
         return searchText
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.global(qos: .background).async {
-            self.viewModel.fetchingContacts {
-                DispatchQueue.main.async { [weak self] in
-                    self!.mytable.reloadData()
-                }
+        
+        self.viewModel.fetchContacts {
+            DispatchQueue.main.async { [weak self] in
+                self?.contactsTableView.reloadData()
             }
         }
         view.backgroundColor = UIColor(named: "ModeColor")
@@ -42,33 +41,34 @@ class ContactListViewController: UIViewController {
         setupConstraints()
     }
     func setupViews() {
-        mytable.dataSource = self
-        mytable.delegate = self
+        contactsTableView.dataSource = self
+        contactsTableView.delegate = self
         searchText.delegate  = self
         view.addSubview(searchText)
-        view.addSubview(mytable)
+        view.addSubview(contactsTableView)
     }
     func setupConstraints() {
         searchText.translatesAutoresizingMaskIntoConstraints = false
         
-        searchText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25).isActive = true
-        searchText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2).isActive = true
+        searchText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
+        searchText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        searchText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
-        mytable.translatesAutoresizingMaskIntoConstraints  = false
         
-        mytable.topAnchor.constraint(equalTo: searchText.bottomAnchor, constant: 10).isActive = true
-        mytable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
-        mytable.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        mytable.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        contactsTableView.translatesAutoresizingMaskIntoConstraints  = false
+        
+        contactsTableView.topAnchor.constraint(equalTo: searchText.bottomAnchor, constant: 10).isActive = true
+        contactsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
+        contactsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        contactsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
 }
 
-extension ContactListViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        viewModel.filterText(textField.text!)
+extension ContactListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterText(searchBar.text!)
         DispatchQueue.main.async {[weak self ] in
-            self?.mytable.reloadData()
+            self?.contactsTableView.reloadData()
         }
     }
 }

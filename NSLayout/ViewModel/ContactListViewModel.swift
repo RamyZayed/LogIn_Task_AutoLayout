@@ -9,7 +9,7 @@ import Foundation
 import Contacts
 import UIKit
 class ConatctListViewModel {
-    let titles: [String] = [
+    let sections: [String] = [
         "A",
         "B",
         "C",
@@ -38,7 +38,7 @@ class ConatctListViewModel {
         "Z"
     ]
     var filtered: [Contact] = []
-    var d2array: [[Contact]] = [
+    var sortedContactsOnSections: [[Contact]] = [
         [],
         [],
         [],
@@ -71,16 +71,18 @@ class ConatctListViewModel {
         if searchText == ""{
             return
         }
-        let query = searchText
-        for column in d2array {
-            for element in column {
-                if element.name.uppercased().starts(with: query.uppercased()) {
-                    filtered.append(element)
+        DispatchQueue.global(qos: .background).async {
+            let query = searchText
+            for column in self.sortedContactsOnSections {
+                for element in column {
+                    if element.name.uppercased().starts(with: query.uppercased()) {
+                        self.filtered.append(element)
+                    }
                 }
             }
         }
     }
-    func fetchingContacts (completionHandler: @escaping () -> Void ) {
+    func fetchContacts (completionHandler: @escaping () -> Void ) {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { granted, err  in
             if let err = err {
@@ -117,11 +119,12 @@ class ConatctListViewModel {
                                               designation: designation,
                                               department: department,
                                               station: station,
-                                              company: company)
+                                              company: company,
+                                              color: colors.randomElement().unsafelyUnwrapped)
                         let firstLetter: Character = Character(Array(name)[0].uppercased())
                         var asc: Int = Int(firstLetter.asciiValue!)
                         asc -= 65
-                        self.d2array[asc].append(profile)
+                        self.sortedContactsOnSections[asc].append(profile)
                         completionHandler()
                     }
                 } catch _ {

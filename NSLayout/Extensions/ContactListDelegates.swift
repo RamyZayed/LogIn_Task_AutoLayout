@@ -15,12 +15,12 @@ extension ContactListViewController: UITableViewDataSource {
             label.text = String(Array(searchText.text!)[0])
             return label
         }
-        if viewModel.d2array[section].count == 0 {
+        if viewModel.sortedContactsOnSections[section].count == 0 {
             return nil
         }
         let sectionLabel = UnicodeScalar(section + 65)
         let char = Character(sectionLabel!)
-        label.text = String(char)
+        label.text = "   " + String(char)
         label.textColor  = .gray
         return label
     }
@@ -29,38 +29,38 @@ extension ContactListViewController: UITableViewDataSource {
         if searchText.text != ""{
             return 1
         }
-        return viewModel.d2array.count
+        return viewModel.sortedContactsOnSections.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchText.text != ""{
             return viewModel.filtered.count
         }
-        if viewModel.d2array[section].count == 0 {
+        if viewModel.sortedContactsOnSections[section].count == 0 {
             return 0
         }
-        return viewModel.d2array[section].count
+        return viewModel.sortedContactsOnSections[section].count
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if viewModel.d2array[section].count == 0 {
+        if viewModel.sortedContactsOnSections[section].count == 0 {
             return 0
         }
         return 20
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if viewModel.d2array[section].count == 0 {
+        if viewModel.sortedContactsOnSections[section].count == 0 {
             return 0
         }
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = mytable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ContactCell {
+        if let cell = contactsTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ContactCell {
             var element: Contact
             if !viewModel.filtered.isEmpty {
                 element = viewModel.filtered[indexPath.row]
             } else {
-                element = viewModel.d2array[indexPath.section][indexPath.row]
+                element = viewModel.sortedContactsOnSections[indexPath.section][indexPath.row]
             }
-            cell.set(currentContact: element)
+            cell.elementsSetup(currentContact: element)
             return cell
         }
         return UITableViewCell()
@@ -73,14 +73,14 @@ extension ContactListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mytable.deselectRow(at: indexPath, animated: true)
+        contactsTableView.deselectRow(at: indexPath, animated: true)
         let informationView = InfoScreenViewController()
         let InfoScreenvm = InfoScreenViewModel()
         informationView.viewModel = InfoScreenvm
         if searchText.text != ""{
-            informationView.viewModel?.person = viewModel.filtered[indexPath.row]
+            informationView.viewModel.person = viewModel.filtered[indexPath.row]
         } else {
-            informationView.viewModel?.person = viewModel.d2array[indexPath.section][indexPath.row]
+            informationView.viewModel.person = viewModel.sortedContactsOnSections[indexPath.section][indexPath.row]
         }
         //        s2.person = profiles[indexPath.row]
         informationView.modalPresentationStyle = .formSheet
@@ -92,6 +92,6 @@ extension ContactListViewController: UITableViewDelegate {
         if !viewModel.filtered.isEmpty {
             return []
         }
-        return viewModel.titles
+        return viewModel.sections
     }
 }

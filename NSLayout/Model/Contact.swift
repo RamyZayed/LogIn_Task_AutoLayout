@@ -17,4 +17,5 @@ struct Contact {
     var department: String
     var station: String
     var company: String
+    var color : UIColor
 }

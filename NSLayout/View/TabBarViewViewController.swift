@@ -9,17 +9,17 @@ import UIKit
 
 class TabBarViewViewController: UITabBarController {
     let contactList = ContactListViewController()
-    let tempView1 : EmptyViewViewController = {
+    let greenView : EmptyViewViewController = {
         let tempView1 = EmptyViewViewController()
         tempView1.color = .green
         return tempView1
     }()
-    let tempView2 : EmptyViewViewController = {
+    let yellowView : EmptyViewViewController = {
         let tempView2 = EmptyViewViewController()
         tempView2.color = .yellow
         return tempView2
     }()
-    let tempView3 : EmptyViewViewController = {
+    let blueView : EmptyViewViewController = {
         let tempView3 = EmptyViewViewController()
         tempView3.color = .blue
         return tempView3
@@ -39,7 +39,7 @@ class TabBarViewViewController: UITabBarController {
         tabBar.tintColor = .systemRed
     }
     func setUpBarItems() {
-        setViewControllers([contactList, tempView1, tempView2, tempView3], animated: true)
+        setViewControllers([contactList, greenView, yellowView, blueView], animated: true)
         guard let items = tabBar.items else {
             return
         }

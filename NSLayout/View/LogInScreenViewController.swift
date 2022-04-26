@@ -33,8 +33,9 @@ class LogInScreenViewController: UIViewController {
         
         return passwordTextField
     }()
-    let emailTextField : TextFieldWithPadding = {
-       let emailTextField = TextFieldWithPadding()
+    
+    let emailTextField : UITextField = {
+       let emailTextField = UITextField()
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 15.0)
@@ -115,10 +116,11 @@ class LogInScreenViewController: UIViewController {
         registerButton.setTitleColor(UIColor.blue, for: .normal)
         return registerButton
     }()
-    let upperView = UIView()
-    let middleView = UIView()
-    let credView = UIView()
+    let logoView = UIView()
+    let labelView = UIView()
+    let credintialsView = UIView()
     let bottomView = UIView()
+    let alternativeSignInViews = UIView()
     let facebookButton : UIButton = {
         let facebookButton = UIButton()
         facebookButton.layer.borderWidth = 1
@@ -126,7 +128,9 @@ class LogInScreenViewController: UIViewController {
         facebookButton.layer.cornerRadius = 10
         facebookButton.contentVerticalAlignment = .center
         facebookButton.contentHorizontalAlignment = .center
-        facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
+        facebookButton.contentMode = .center
+        facebookButton.imageView?.contentMode = .scaleAspectFit
+
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         
         return facebookButton
@@ -138,7 +142,9 @@ class LogInScreenViewController: UIViewController {
         twitterButton.layer.cornerRadius = 10
         twitterButton.contentVerticalAlignment = .fill
         twitterButton.contentHorizontalAlignment = .fill
-        twitterButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30)
+//        twitterButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
+        twitterButton.contentMode = .center
+        twitterButton.imageView?.contentMode = .scaleAspectFit
         twitterButton.translatesAutoresizingMaskIntoConstraints = false
         return twitterButton
     }()
@@ -152,6 +158,20 @@ class LogInScreenViewController: UIViewController {
         return appleButton
     }()
     let viewModel = LogInViewModel()
+    
+    let emailTextFieldBaseLine : UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+    
+    let passwordTextFieldBaseLine : UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
     
  
     
@@ -175,142 +195,165 @@ class LogInScreenViewController: UIViewController {
         present(tabBarVc, animated: true)
     }
     func addingViews() {
-        view.addSubview(upperView)
-        upperView.addSubview(upperImage)
-        view.addSubview(middleView)
-        middleView.addSubview(loginLabel)
-        view.addSubview(credView)
-        credView.addSubview(logInButton)
-        credView.addSubview(orLabel)
-        credView.addSubview(emailTextField)
-        credView.addSubview(passwordTextField)
+        view.addSubview(logoView)
+        logoView.addSubview(upperImage)
+        view.addSubview(labelView)
+        labelView.addSubview(loginLabel)
+        view.addSubview(credintialsView)
+        credintialsView.addSubview(logInButton)
+        credintialsView.addSubview(orLabel)
+        credintialsView.addSubview(emailTextField)
+        credintialsView.addSubview(passwordTextField)
+        view.addSubview(alternativeSignInViews)
+        alternativeSignInViews.addSubview(appleButton)
+        alternativeSignInViews.addSubview(facebookButton)
+        alternativeSignInViews.addSubview(twitterButton)
         view.addSubview(bottomView)
-        bottomView.addSubview(facebookButton)
-        bottomView.addSubview(twitterButton)
         bottomView.addSubview(newLabel)
-        bottomView.addSubview(appleButton)
         bottomView.addSubview(registerButton)
+        credintialsView.addSubview(emailTextFieldBaseLine)
+        credintialsView.addSubview(passwordTextFieldBaseLine)
     }
     func setUpConstraints() {
-        upperView.translatesAutoresizingMaskIntoConstraints = false
-        upperView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
-        upperView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        upperView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        upperView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+        logoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
+        logoView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        logoView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        logoView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        logoView.backgroundColor = .brown
         upperImage.translatesAutoresizingMaskIntoConstraints = false
         
-        upperImage.centerXAnchor.constraint(equalTo: upperView.centerXAnchor).isActive = true
-        upperImage.centerYAnchor.constraint(equalTo: upperView.centerYAnchor).isActive = true
-        upperImage.heightAnchor.constraint(equalTo: upperView.heightAnchor, multiplier: 0.6).isActive = true
-        upperImage.widthAnchor.constraint(equalTo: upperView.widthAnchor, multiplier: 0.5).isActive = true
+        upperImage.centerXAnchor.constraint(equalTo: logoView.centerXAnchor).isActive = true
+        upperImage.centerYAnchor.constraint(equalTo: logoView.centerYAnchor).isActive = true
+        upperImage.heightAnchor.constraint(equalTo: logoView.heightAnchor, multiplier: 0.6).isActive = true
+        upperImage.widthAnchor.constraint(equalTo: logoView.widthAnchor, multiplier: 0.5).isActive = true
         
-        middleView.translatesAutoresizingMaskIntoConstraints = false
-        middleView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        middleView.topAnchor.constraint(equalTo: upperView.bottomAnchor).isActive = true
-        middleView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        middleView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        labelView.translatesAutoresizingMaskIntoConstraints = false
+        labelView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        labelView.topAnchor.constraint(equalTo: logoView.bottomAnchor).isActive = true
+        labelView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        labelView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
         
+
         
-        credView.translatesAutoresizingMaskIntoConstraints = false
-        //        CredView.backgroundColor = .red
-        credView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
-        credView.topAnchor.constraint(equalTo: middleView.bottomAnchor).isActive = true
-        credView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        credView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0 ) .isActive = true
+        
+        credintialsView.translatesAutoresizingMaskIntoConstraints = false
+//                credView.backgroundColor = .red
+        credintialsView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        credintialsView.topAnchor.constraint(equalTo: labelView.bottomAnchor).isActive = true
+        credintialsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        credintialsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0 ) .isActive = true
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         
         
-        logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
-        logInButton.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
+        logInButton.bottomAnchor.constraint(equalTo: credintialsView.bottomAnchor).isActive = true
+        logInButton.heightAnchor.constraint(equalTo: credintialsView.heightAnchor, multiplier: 0.3).isActive = true
         logInButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
         logInButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
+
         
-        
-        orLabel.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 15).isActive = true
-        orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        
-        emailTextField.topAnchor.constraint(equalTo: credView.topAnchor).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: credintialsView.topAnchor).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: loginLabel.leadingAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
-        emailTextField.widthAnchor.constraint(equalTo: credView.widthAnchor, multiplier: 0.8).isActive = true
+        emailTextField.heightAnchor.constraint(equalTo: credintialsView.heightAnchor, multiplier: 0.2).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: credintialsView.widthAnchor, multiplier: 0.8).isActive = true
         
+        emailTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        emailTextFieldBaseLine.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
+        emailTextFieldBaseLine.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
+        emailTextFieldBaseLine.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        
+        passwordTextFieldBaseLine.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
+        passwordTextFieldBaseLine.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
+        passwordTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        passwordTextFieldBaseLine.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor).isActive = true
     
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
-        passwordTextField.heightAnchor.constraint(equalTo: credView.heightAnchor, multiplier: 0.2).isActive = true
+        passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
 
         
         
-        bottomView.translatesAutoresizingMaskIntoConstraints = false
-        //        bottomView.backgroundColor = .red
-        bottomView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
-        bottomView.topAnchor.constraint(equalTo: credView.bottomAnchor).isActive = true
-        bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
+        
+        alternativeSignInViews.translatesAutoresizingMaskIntoConstraints = false
+//        alternativeSignInViews.backgroundColor = .yellow
+        alternativeSignInViews.topAnchor.constraint(equalTo: credintialsView.bottomAnchor).isActive = true
+        alternativeSignInViews.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        alternativeSignInViews.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        alternativeSignInViews.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        
+        orLabel.topAnchor.constraint(equalTo: alternativeSignInViews.topAnchor).isActive = true
+        orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         facebookButton.setImage(facebookImage.image, for: .normal)
-        facebookButton.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.25).isActive = true
-        facebookButton.heightAnchor.constraint(equalTo: facebookButton.widthAnchor, multiplier: 0.5).isActive = true
-        facebookButton.topAnchor.constraint(equalToSystemSpacingBelow: bottomView.topAnchor, multiplier: 0.2)
-            .isActive = true
+        facebookButton.heightAnchor.constraint(equalTo: alternativeSignInViews.heightAnchor, multiplier: 0.4).isActive = true
+        facebookButton.widthAnchor.constraint(equalTo: facebookButton.heightAnchor, multiplier: 1.5).isActive = true
+        facebookButton.centerYAnchor.constraint(equalTo: alternativeSignInViews.centerYAnchor).isActive = true
+
         facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        
+
+
         twitterButton.setImage(twitterImage.image, for: .normal)
-        
+
         twitterButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         twitterButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
         twitterButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor).isActive = true
         twitterButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
-        
-        
+
+
         appleButton.setImage(appleImage.image, for: .normal)
-        
+
         appleButton.widthAnchor.constraint(equalTo: facebookButton.widthAnchor).isActive = true
         appleButton.heightAnchor.constraint(equalTo: facebookButton.heightAnchor).isActive = true
         appleButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor).isActive = true
         appleButton.topAnchor.constraint(equalTo: facebookButton.topAnchor).isActive = true
+
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+//        bottomView.backgroundColor = .red
+        bottomView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        bottomView.topAnchor.constraint(equalTo: alternativeSignInViews.bottomAnchor).isActive = true
+        bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
-        
-        
+        newLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         newLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -35).isActive = true
-        registerButton.bottomAnchor.constraint(equalTo: newLabel.bottomAnchor, constant: 7).isActive = true
+
+        registerButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         registerButton.leadingAnchor.constraint(equalTo: newLabel.trailingAnchor).isActive = true
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let middleViewWidth = middleView.frame.width
-        let middleViewHeight = middleView.frame.height
-        loginLabel.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 0.1*middleViewWidth)
-            .isActive  = true
-        loginLabel.topAnchor.constraint(equalTo: middleView.topAnchor).isActive = true
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let middleViewWidth = labelView.frame.width
+        let middleViewHeight = labelView.frame.height
+        loginLabel.leadingAnchor.constraint(equalTo: labelView.leadingAnchor, constant: 0.1*middleViewWidth).isActive = true
+        loginLabel.topAnchor.constraint(equalTo: labelView.topAnchor).isActive = true
         loginLabel.heightAnchor.constraint(equalToConstant: middleViewHeight ).isActive = true
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0,
-                                  y: passwordTextField.frame.height,
-                                  width: passwordTextField.frame.width,
-                                  height: 1.0)
-        bottomLine.backgroundColor = UIColor.gray.cgColor
-        passwordTextField.borderStyle = UITextField.BorderStyle.none
-        passwordTextField.layer.addSublayer(bottomLine)
-        let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0.0,
-                                   y: emailTextField.frame.height,
-                                   width: emailTextField.frame.width,
-                                   height: 1.0)
-        bottomLine1.backgroundColor = UIColor.gray.cgColor
-        emailTextField.borderStyle = UITextField.BorderStyle.none
-        emailTextField.layer.addSublayer(bottomLine1)
-        let bottomViewHeight = bottomView.frame.height
-        newLabel.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0.7*bottomViewHeight).isActive = true
-        //        newLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        
+        //let width = facebookButton.bounds.width
+       // facebookButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
+//        let bottomLine = CALayer()
+//        bottomLine.frame = CGRect(x: 0.0,
+//                                  y: passwordTextField.frame.height,
+//                                  width: passwordTextField.frame.width,
+//                                  height: 1.0)
+//        bottomLine.backgroundColor = UIColor.gray.cgColor
+//        passwordTextField.borderStyle = UITextField.BorderStyle.none
+//        passwordTextField.layer.addSublayer(bottomLine)
+//        let bottomLine1 = CALayer()
+//        bottomLine1.frame = CGRect(x: 0.0,
+//                                   y: emailTextField.frame.height,
+//                                   width: emailTextField.frame.width,
+//                                   height: 1.0)
+//        bottomLine1.backgroundColor = UIColor.gray.cgColor
+       // emailTextField.borderStyle = UITextField.BorderStyle.none
+        //emailTextField.layer.addSublayer(bottomLine1)
+        //let bottomViewHeight = bottomView.frame.height
+        //emailTextField.editingRect(forBounds: emailTextField.bounds)
     }
+    
 }
 

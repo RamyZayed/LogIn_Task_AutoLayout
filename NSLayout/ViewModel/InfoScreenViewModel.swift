@@ -9,6 +9,5 @@ import Foundation
 
 class InfoScreenViewModel {
     var person : Contact?
-    
-    
 }
+

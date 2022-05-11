@@ -23,10 +23,11 @@
 		11BCD8BA2809F4E600BBBAE8 /* TabBarViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */; };
 		11BCD8BC2809F59500BBBAE8 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */; };
 		11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */; };
-		11BCD8C12812B0FE00BBBAE8 /* ContactListDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */; };
 		11BCD8C3281547DE00BBBAE8 /* InfoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C2281547DE00BBBAE8 /* InfoScreenViewModel.swift */; };
 		11BCD8C5281698E800BBBAE8 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */; };
 		11BCD8C72816BFA400BBBAE8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */; };
+		11BCD8CA282B94CD00BBBAE8 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */; };
+		11BCD8CC282B9CEE00BBBAE8 /* CredentialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */; };
 		142C81F5727B9EE6A22A6695 /* Pods_NSLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F0C732EC6381C6C5963C57 /* Pods_NSLayout.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,10 +52,11 @@
 		11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewViewController.swift; sourceTree = "<group>"; };
 		11BCD8BB2809F59500BBBAE8 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
-		11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDelegates.swift; sourceTree = "<group>"; };
 		11BCD8C2281547DE00BBBAE8 /* InfoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenViewModel.swift; sourceTree = "<group>"; };
 		11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
 		11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageCell.swift; sourceTree = "<group>"; };
+		11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CredentialsCell.swift; path = NSLayout/View/logInScreenCells/CredentialsCell.swift; sourceTree = SOURCE_ROOT; };
 		368AC25FD79CACF00257960C /* Pods-NSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSLayout.debug.xcconfig"; path = "Target Support Files/Pods-NSLayout/Pods-NSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				11BCD88C28070DEA00BBBAE8 /* ContactListViewController.swift */,
 				11BCD8B82809F17000BBBAE8 /* Cells */,
 				118937E427BA5B3C004EB233 /* LogInScreenViewController.swift */,
+				11BCD8C8282B887E00BBBAE8 /* logInScreenCells */,
 				11BCD8B4280752E400BBBAE8 /* InfoScreenViewController.swift */,
 				11BCD8B62809F16600BBBAE8 /* EmptyViewViewController.swift */,
 				11BCD8B92809F4E600BBBAE8 /* TabBarViewViewController.swift */,
@@ -149,11 +152,19 @@
 			isa = PBXGroup;
 			children = (
 				11BCD8BE280FFA4300BBBAE8 /* UITextFieldExtensions.swift */,
-				11BCD8C02812B0FE00BBBAE8 /* ContactListDelegates.swift */,
 				11BCD8C4281698E800BBBAE8 /* ColorsExtension.swift */,
 				11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		11BCD8C8282B887E00BBBAE8 /* logInScreenCells */ = {
+			isa = PBXGroup;
+			children = (
+				11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */,
+				11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */,
+			);
+			path = logInScreenCells;
 			sourceTree = "<group>";
 		};
 		18C5B21CE7D58CA760595917 /* Frameworks */ = {
@@ -292,6 +303,7 @@
 			files = (
 				118937E527BA5B3C004EB233 /* LogInScreenViewController.swift in Sources */,
 				118937E127BA5B3C004EB233 /* AppDelegate.swift in Sources */,
+				11BCD8CC282B9CEE00BBBAE8 /* CredentialsCell.swift in Sources */,
 				11BCD88D28070DEA00BBBAE8 /* ContactListViewController.swift in Sources */,
 				11BCD8B5280752E400BBBAE8 /* InfoScreenViewController.swift in Sources */,
 				11BCD8BC2809F59500BBBAE8 /* TabBarViewModel.swift in Sources */,
@@ -304,8 +316,8 @@
 				11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */,
 				11BCD8B12807462600BBBAE8 /* ContactCell.swift in Sources */,
 				11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */,
+				11BCD8CA282B94CD00BBBAE8 /* imageCell.swift in Sources */,
 				118937E327BA5B3C004EB233 /* SceneDelegate.swift in Sources */,
-				11BCD8C12812B0FE00BBBAE8 /* ContactListDelegates.swift in Sources */,
 				11BCD8C5281698E800BBBAE8 /* ColorsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

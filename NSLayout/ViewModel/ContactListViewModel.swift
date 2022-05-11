@@ -66,6 +66,8 @@ class ConatctListViewModel {
         [],
         []
     ]
+    var contacts = [String : [Contact]]()
+    
     func filterText(_ searchText: String) {
         filtered.removeAll()
         if searchText == ""{

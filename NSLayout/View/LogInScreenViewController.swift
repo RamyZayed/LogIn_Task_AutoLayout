@@ -59,9 +59,9 @@ extension LogInScreenViewController : UITableViewDataSource{
             return layoutTable.dequeueReusableCell(withIdentifier: "layoutCell", for: indexPath) as! imageCell
         }else if(indexPath.row == 1){
             let cell = layoutTable.dequeueReusableCell(withIdentifier: "layoutCell2", for: indexPath) as! CredentialsCell
-            cell.handler = {
+            cell.handler = { [weak self] in
                 let tabBarVc = TabBarViewViewController()
-                self.present(tabBarVc, animated: true)
+                self?.present(tabBarVc, animated: true)
             }
             return cell
         }else if(indexPath.row == 2){

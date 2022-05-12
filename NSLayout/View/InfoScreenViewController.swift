@@ -138,20 +138,35 @@ class InfoScreenViewController: UIViewController {
         stackView.distribution  = UIStackView.Distribution.equalSpacing
         return stackView
     }()
+    
+    private var backButton : UIButton  = {
+        let button = UIButton()
+        button.setTitle("Back", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "ModeColor")
         addViews()
         defineConstraints()
         
+        backButton.addTarget(self, action: #selector(dismissing) , for: .touchUpInside)
+        
+        
     }
     
     deinit {
         print("Deleted from memory")
     }
-    
+    @objc func dismissing(){
+        dismiss(animated: true)
+    }
     func addViews() {
         view.addSubview(pictureHolder)
+        pictureHolder.addSubview(backButton)
         pictureHolder.addSubview(contactImage)
         view.addSubview(firstLetterOfFirstAndLast)
         view.addSubview(labelView)
@@ -171,6 +186,7 @@ class InfoScreenViewController: UIViewController {
         stackView.addArrangedSubview(departmentLabel)
         stackView.addArrangedSubview(stationLabel)
         stackView.addArrangedSubview(companyLabel)
+        
     }
     
     
@@ -187,7 +203,10 @@ class InfoScreenViewController: UIViewController {
     func defineConstraints () {
         pictureHolder.translatesAutoresizingMaskIntoConstraints = false
         
-        pictureHolder.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backButton.topAnchor.constraint(equalTo: pictureHolder.topAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: pictureHolder.leadingAnchor, constant:  12).isActive = true
+        
+        pictureHolder.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         pictureHolder.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
         pictureHolder.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         pictureHolder.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true

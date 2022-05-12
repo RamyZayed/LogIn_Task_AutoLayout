@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Contacts
 
 class ContactListViewController: UIViewController {
     let viewModel = ConatctListViewModel()
@@ -106,6 +107,7 @@ extension ContactListViewController: UITableViewDataSource {
         if searchText.text != ""{
             return viewModel.filtered.count
         }
+        
         if viewModel.sortedContactsOnSections[section].count == 0 {
             return 0
         }
@@ -154,7 +156,7 @@ extension ContactListViewController: UITableViewDelegate {
             informationView.viewModel.person = viewModel.sortedContactsOnSections[indexPath.section][indexPath.row]
         }
         //        s2.person = profiles[indexPath.row]
-        informationView.modalPresentationStyle = .formSheet
+        informationView.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async { [weak self] in
             self?.present(informationView, animated: true, completion: nil)
         }

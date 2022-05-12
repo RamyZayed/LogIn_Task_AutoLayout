@@ -28,6 +28,8 @@
 		11BCD8C72816BFA400BBBAE8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */; };
 		11BCD8CA282B94CD00BBBAE8 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */; };
 		11BCD8CC282B9CEE00BBBAE8 /* CredentialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */; };
+		11BCD8CE282BC9CC00BBBAE8 /* AlternativeLogInOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8CD282BC9CC00BBBAE8 /* AlternativeLogInOptionsCell.swift */; };
+		11BCD8D1282BD68300BBBAE8 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BCD8D0282BD68300BBBAE8 /* RegisterCell.swift */; };
 		142C81F5727B9EE6A22A6695 /* Pods_NSLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F0C732EC6381C6C5963C57 /* Pods_NSLayout.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		11BCD8C62816BFA400BBBAE8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageCell.swift; sourceTree = "<group>"; };
 		11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CredentialsCell.swift; path = NSLayout/View/logInScreenCells/CredentialsCell.swift; sourceTree = SOURCE_ROOT; };
+		11BCD8CD282BC9CC00BBBAE8 /* AlternativeLogInOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLogInOptionsCell.swift; sourceTree = "<group>"; };
+		11BCD8D0282BD68300BBBAE8 /* RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		368AC25FD79CACF00257960C /* Pods-NSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSLayout.debug.xcconfig"; path = "Target Support Files/Pods-NSLayout/Pods-NSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +167,8 @@
 			children = (
 				11BCD8CB282B9CEE00BBBAE8 /* CredentialsCell.swift */,
 				11BCD8C9282B94CD00BBBAE8 /* imageCell.swift */,
+				11BCD8CD282BC9CC00BBBAE8 /* AlternativeLogInOptionsCell.swift */,
+				11BCD8D0282BD68300BBBAE8 /* RegisterCell.swift */,
 			);
 			path = logInScreenCells;
 			sourceTree = "<group>";
@@ -311,12 +317,14 @@
 				11BCD88F28070DFF00BBBAE8 /* ContactListViewModel.swift in Sources */,
 				11BCD8B32807468900BBBAE8 /* Contact.swift in Sources */,
 				11BCD8C72816BFA400BBBAE8 /* StringExtension.swift in Sources */,
+				11BCD8D1282BD68300BBBAE8 /* RegisterCell.swift in Sources */,
 				11BCD8C3281547DE00BBBAE8 /* InfoScreenViewModel.swift in Sources */,
 				11BCD8B72809F16600BBBAE8 /* EmptyViewViewController.swift in Sources */,
 				11BCD88B2806F14300BBBAE8 /* logInScreenViewModel.swift in Sources */,
 				11BCD8B12807462600BBBAE8 /* ContactCell.swift in Sources */,
 				11BCD8BF280FFA4300BBBAE8 /* UITextFieldExtensions.swift in Sources */,
 				11BCD8CA282B94CD00BBBAE8 /* imageCell.swift in Sources */,
+				11BCD8CE282BC9CC00BBBAE8 /* AlternativeLogInOptionsCell.swift in Sources */,
 				118937E327BA5B3C004EB233 /* SceneDelegate.swift in Sources */,
 				11BCD8C5281698E800BBBAE8 /* ColorsExtension.swift in Sources */,
 			);

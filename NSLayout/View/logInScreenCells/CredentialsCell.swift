@@ -8,7 +8,7 @@
 import UIKit
 
 class CredentialsCell: UITableViewCell {
-
+    var handler : (() -> ())?
     let loginLabel : UILabel = {
         let loginLabel = UILabel()
         loginLabel.text = "Login"
@@ -19,6 +19,7 @@ class CredentialsCell: UITableViewCell {
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
         return loginLabel
     }()
+    
     
     let emailTextField : UITextField = {
         let emailTextField = UITextField()
@@ -35,6 +36,15 @@ class CredentialsCell: UITableViewCell {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         
         return emailTextField
+    }()
+    
+    let logInButton :  UIButton = {
+        let logInButton = UIButton()
+        logInButton.layer.cornerRadius = 10
+        logInButton.setTitle("Login", for: .normal)
+        logInButton.backgroundColor  = .systemBlue
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        return logInButton
     }()
     
     var passwordTextField : TextFieldWithPadding = {
@@ -62,23 +72,84 @@ class CredentialsCell: UITableViewCell {
         return passwordTextField
     }()
     
+    let emailTextFieldBaseLine : UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+    
+    let passwordTextFieldBaseLine : UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+    
+   
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(loginLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
+        contentView.addSubview(emailTextFieldBaseLine)
+        contentView.addSubview(passwordTextFieldBaseLine)
+        contentView.addSubview(logInButton)
+        selectionStyle = .none
+        
+        
+        setUpConstraints()
+        logInButton.addTarget(self, action: #selector(clicked), for: .touchUpInside)
 
-        loginLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+    }
+    @objc func clicked() {
+        let animation  = CABasicAnimation()
+        animation.keyPath = "transform.scale"
+        animation.duration = 0.6
+        animation.fromValue = 1
+        animation.toValue = 0.95
+        animation.autoreverses = true
+        animation.repeatCount = 1
+        logInButton.layer.add(animation, forKey: nil)
+        handler?()
+    }
+    
+    func setUpConstraints(){
+        loginLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10).isActive = true
+        loginLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
+        loginLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -8).isActive = true
         
-        emailTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive  = true
+        emailTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor,constant: 16).isActive = true
+        emailTextField.leadingAnchor.constraint(equalTo: loginLabel.leadingAnchor).isActive = true
+        emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -12).isActive  = true
+        
+        
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 25).isActive  = true
+        passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
+        passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
+        
+        emailTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        emailTextFieldBaseLine.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
+        emailTextFieldBaseLine.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
+        emailTextFieldBaseLine.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        
+        passwordTextFieldBaseLine.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
+        passwordTextFieldBaseLine.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
+        passwordTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        passwordTextFieldBaseLine.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor).isActive = true
+        
+        
+        logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 24).isActive = true
+        logInButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
+        logInButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
+        logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }

@@ -24,6 +24,7 @@ class TabBarViewViewController: UITabBarController {
         tempView3.color = .blue
         return tempView3
     }()
+    
     let viewModel = TabBarViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()

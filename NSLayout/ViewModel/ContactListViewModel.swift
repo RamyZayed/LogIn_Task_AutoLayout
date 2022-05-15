@@ -38,34 +38,9 @@ class ConatctListViewModel {
         "Z"
     ]
     var filtered: [Contact] = []
-    var sortedContactsOnSections: [[Contact]] = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-    ]
+    var sortedContactsOnSections: [[Contact]] = [[Contact]](repeating: [], count: 26)
+    var contacts = [Character : [Contact]]()
+    
     func filterText(_ searchText: String) {
         filtered.removeAll()
         if searchText == ""{
@@ -122,6 +97,12 @@ class ConatctListViewModel {
                                               company: company,
                                               color: colors.randomElement().unsafelyUnwrapped)
                         let firstLetter: Character = Character(Array(name)[0].uppercased())
+                        //----------
+//                        if(self.contacts[firstLetter] == nil){
+//                            self.contacts[firstLetter] = []
+//                        }
+//                        self.contacts[firstLetter]?.append(profile)
+//                        //--------
                         var asc: Int = Int(firstLetter.asciiValue!)
                         asc -= 65
                         self.sortedContactsOnSections[asc].append(profile)

@@ -21,8 +21,8 @@ class CredentialsCell: UITableViewCell {
     }()
     
     
-    let emailTextField : UITextField = {
-        let emailTextField = UITextField()
+    let emailTextField : TextFieldWithBottomLine = {
+        let emailTextField = TextFieldWithBottomLine()
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 15.0)
@@ -47,8 +47,8 @@ class CredentialsCell: UITableViewCell {
         return logInButton
     }()
     
-    var passwordTextField : TextFieldWithPadding = {
-        let passwordTextField = TextFieldWithPadding()
+    var passwordTextField : TextFieldWithBottomLine = {
+        let passwordTextField = TextFieldWithBottomLine()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 15.0)
@@ -71,21 +71,6 @@ class CredentialsCell: UITableViewCell {
         
         return passwordTextField
     }()
-    
-    let emailTextFieldBaseLine : UIView = {
-        let line = UIView()
-        line.backgroundColor = .gray
-        line.translatesAutoresizingMaskIntoConstraints = false
-        return line
-    }()
-    
-    let passwordTextFieldBaseLine : UIView = {
-        let line = UIView()
-        line.backgroundColor = .gray
-        line.translatesAutoresizingMaskIntoConstraints = false
-        return line
-    }()
-    
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -93,8 +78,6 @@ class CredentialsCell: UITableViewCell {
         contentView.addSubview(loginLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
-        contentView.addSubview(emailTextFieldBaseLine)
-        contentView.addSubview(passwordTextFieldBaseLine)
         contentView.addSubview(logInButton)
         selectionStyle = .none
         
@@ -129,17 +112,6 @@ class CredentialsCell: UITableViewCell {
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 25).isActive  = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
-        
-        emailTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        emailTextFieldBaseLine.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
-        emailTextFieldBaseLine.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
-        emailTextFieldBaseLine.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
-        
-        passwordTextFieldBaseLine.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
-        passwordTextFieldBaseLine.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
-        passwordTextFieldBaseLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        passwordTextFieldBaseLine.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor).isActive = true
-        
         
         logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 24).isActive = true
         logInButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
